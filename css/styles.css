@@ -1,0 +1,18 @@
+ul {
+  list-style-type: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1200px;
+  padding: 24px auto;
+  justify-content: center;
+  gap: 24px;
+}
+
+.gallery-link:hover .gallery-image {
+  width: 376px;
+  height: 208px;
+  margin: -8px;
+}
