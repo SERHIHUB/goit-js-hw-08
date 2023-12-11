@@ -71,14 +71,14 @@ const addPic = images.reduce(
     html +
     `
       <li class="gallery-item">
-        <a class="gallery-link" href= ${original}>
+        <a class="gallery-link" href="${original}">
           <img
             class="gallery-image"
-            src= ${preview}
-            data-source= ${original}
-            alt= ${description}
-            width = "360"
-            height = "200"
+            src="${preview}"
+            data-source="${original}"
+            alt= "${description}"
+            width="360"
+            height="200"
           />
         </a>
       </li>`,
@@ -90,15 +90,18 @@ gallery.insertAdjacentHTML("beforeend", addPic);
 gallery.addEventListener("click", (event) => {
   event.preventDefault();
 
-  const item = event.target.dataset.source;
+  let item;
+  if (event.target.dataset.source) {
+    item = event.target.dataset.source;
+  }
 
   if (item) {
     const bigImag = images.find((bigImag) => bigImag.original === item);
-    if (!item) return;
+    // if (!item) return;
 
     const instance = basicLightbox.create(
       `<div class = "modal_box">
-       <img width = "1000" height = "740" src = ${bigImag.original} alt = ${bigImag.description}/>
+       <img width="1000" height="740" src = "${bigImag.original}" alt = "${bigImag.description}"/>
        </div>`,
       {
         onShow: (instance) => document.addEventListener("keydown", listener),
